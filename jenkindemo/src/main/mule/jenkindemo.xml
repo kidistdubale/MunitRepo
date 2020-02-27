@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="23c8868b-2dc6-43bf-a72b-899c45192a6d" >
+		<http:listener-connection host="0.0.0.0" port="8084" />
+	</http:listener-config>
+	<flow name="jenkindemoFlow" doc:id="a0068855-6295-4d35-af45-742dac44c479" >
+		<http:listener doc:name="Listener" doc:id="57cfb52f-c3a3-416c-9db0-a4eb41fb1815" config-ref="HTTP_Listener_config" path="/jenkin"/>
+		<set-payload value="#['First Demo to check CICD']" doc:name="Set Payload" doc:id="223b137d-eab3-4a02-9095-b77016d43c38" />
+		<logger level="INFO" doc:name="Logger" doc:id="e5aadc8c-e6f1-48a8-997a-d57c64583b32" message="#[payload]"/>
+	</flow>
+</mule>
